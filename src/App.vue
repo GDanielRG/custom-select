@@ -1,26 +1,40 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="h-screen w-screen flex justify-center items-center">
+    <div class="w-64">
+      <ui-select
+        :options="options"
+        :invalid="invalid"
+        error="Something went wrong"
+        v-model="myValue"
+        placeholder="Select an option"
+        label="Some label"
+        cornerHint="optional"
+        help="Some text to help"
+      />
+    </div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  name: "App",
+  data() {
+    return {
+      myValue: "",
+    };
+  },
+  computed: {
+    options() {
+      return [
+        { value: 1, text: "First option" },
+        { value: 2, text: "Second option" },
+        { value: 3, text: "Third option" },
+        { value: 4, text: "Fourth option" },
+      ];
+    },
+    invalid() {
+      return this.myValue == this.options[2];
+    },
+  },
+};
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
