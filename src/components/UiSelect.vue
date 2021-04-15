@@ -1,4 +1,3 @@
-/* eslint-disable */
 <template>
   <Listbox class="w-full" as="div" v-model="modelValue">
     <div class="flex justify-between" v-if="cornerHint || label">
